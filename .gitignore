@@ -31,3 +31,4 @@ build/
 /target/*
 !/target/site/
 !/target/site/jacoco/
+/.idea
