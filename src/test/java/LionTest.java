@@ -25,35 +25,23 @@ public class LionTest {
     public void testLionGetKittens() throws Exception {
         // Настраиваем мок
         when(felineMock.getKittens()).thenReturn(2);
-
-        // Создаем объект Lion
         Lion lion = new Lion(VALID_SEX_MALE, felineMock);
-
-        // Проверяем результат
         assertEquals(2, lion.getKittens());
     }
 
     @Test
     public void testLionGetFood() throws Exception {
-        // Настраиваем мок
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
         when(felineMock.getFood("Хищник")).thenReturn(expectedFood);
-
-        // Создаем объект Lion
         Lion lion = new Lion(VALID_SEX_FEMALE, felineMock);
-
-        // Проверяем результат
         assertEquals(expectedFood, lion.getFood());
     }
 
     @Test
     public void testLionInvalidSex() {
-        // Проверяем выброс исключения с определенным сообщением
         Exception exception = assertThrows(Exception.class, () -> {
             new Lion(INVALID_SEX, felineMock);
         });
-
-        // Проверяем сообщение исключения
         assertEquals("Используйте допустимые значения пола животного - самец или самка", exception.getMessage());
     }
 }
